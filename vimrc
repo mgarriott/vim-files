@@ -35,18 +35,15 @@ if !has("gui_running")
   set termencoding=latin1
 endif
 
-if has("ruby")
-  " Find the current date and and write it after the cursor.
-  function! WriteDate()
-    ruby require 'date'
-    ruby VIM::command('let date = "' + Date.today.to_s + '"')
-    let temp = @d
-    let @d = date
-    normal "dp
-    let @d = temp
-  endfunction
-  command! WriteDate call WriteDate()
-endif
+" Find the current date and and write it after the cursor.
+function! WriteDate()
+  let date = strftime("%Y-%m-%d", localtime())
+  let temp = @d
+  let @d = date
+  normal "dp
+  let @d = temp
+endfunction
+command! WriteDate call WriteDate()
 
 noremap  :echo "Nope!"<CR>
 inoremap  Nope!
