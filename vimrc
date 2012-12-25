@@ -95,10 +95,9 @@ augroup my_autocmds
   autocmd BufWritePost .vimrc,vimrc source $MYVIMRC
 augroup END
 
-call pathogen#infect()
-
-" For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
-" let &guioptions = substitute(&guioptions, "t", "", "g")
+if exists('*pathogen#infect')
+  call pathogen#infect()
+endif
 
 " Don't use Ex mode, use Q for formatting
 noremap Q gq
