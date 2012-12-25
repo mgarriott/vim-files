@@ -95,7 +95,7 @@ augroup my_autocmds
   autocmd InsertLeave * match ExtraWhitespace /\s\+$/
   autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 
-  autocmd BufWritePost .vimrc source $MYVIMRC
+  autocmd BufWritePost .vimrc,vimrc source $MYVIMRC
 augroup END
 
 call pathogen#infect()
