@@ -1,8 +1,9 @@
-DIR="$( cd "$( dirname "$0" )" && pwd )" 
+DIR="$( cd "$( dirname "$0" )" && pwd )"
 
 # Link rc files to home directory
 ln -s $DIR/vimrc $HOME/.vimrc
 ln -s $DIR/gvimrc $HOME/.gvimrc
 
 # Internal vim links
+mkdir -p $DIR/autoload/
 ln -s $DIR/pathogen/autoload/pathogen.vim $DIR/autoload/
