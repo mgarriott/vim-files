@@ -15,7 +15,6 @@ set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 
-"Matt's additions
 let mapleader = " "
 
 set hidden
@@ -82,19 +81,6 @@ noremap <leader>tc :read !git log --branches --pretty=format:"\%s" --since yeste
 noremap <leader>v :tabedit $MYVIMRC<cr>
 noremap <leader>ctw :%substitute/\s\+$//<cr>:write<cr>
 
-" Highlight EOL whitespace, http://vim.wikia.com/wiki/Highlight_unwanted_spaces
-highlight ExtraWhitespace ctermbg=darkred guibg=#382424
-augroup my_autocmds
-  au!
-  autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-  autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-  " the above flashes annoyingly while typing, be calmer in insert mode
-  autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-  autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-
-  autocmd BufWritePost .vimrc,vimrc source $MYVIMRC
-augroup END
-
 silent! call pathogen#infect()
 
 " Don't use Ex mode, use Q for formatting
@@ -118,6 +104,19 @@ endif
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
+
+  " Highlight EOL whitespace, http://vim.wikia.com/wiki/Highlight_unwanted_spaces
+  highlight ExtraWhitespace ctermbg=darkred guibg=#382424
+  augroup my_autocmds
+    au!
+    autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+    autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+    " the above flashes annoyingly while typing, be calmer in insert mode
+    autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+    autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+
+    autocmd BufWritePost .vimrc,vimrc source $MYVIMRC
+  augroup END
 
   " Enable file type detection.
   " Use the default filetype settings, so that mail gets 'tw' set to 72,
