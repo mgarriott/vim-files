@@ -6,4 +6,4 @@ ln -s $DIR/gvimrc $HOME/.gvimrc
 
 # Internal vim links
 mkdir -p $DIR/autoload/
-ln -s $DIR/pathogen/autoload/pathogen.vim $DIR/autoload/
+ln -s $DIR/bundle/pathogen/autoload/pathogen.vim $DIR/autoload/
