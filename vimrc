@@ -95,9 +95,7 @@ augroup my_autocmds
   autocmd BufWritePost .vimrc,vimrc source $MYVIMRC
 augroup END
 
-if exists('*pathogen#infect')
-  call pathogen#infect()
-endif
+silent! call pathogen#infect()
 
 " Don't use Ex mode, use Q for formatting
 noremap Q gq
