@@ -142,6 +142,8 @@ if has("autocmd")
 
   augroup END
 
+  " Automatically delete fugitive buffers when they are hidden
+  autocmd BufReadPost fugitive://* set bufhidden=delete
 else
 
 endif " has("autocmd")
