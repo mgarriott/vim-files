@@ -3,3 +3,5 @@
 *.sw[pon]
 
 autoload/pathogen.vim
+
+plugin/.hate
