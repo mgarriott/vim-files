@@ -10,8 +10,6 @@ else
   set guifont=Inconsolata\ Medium\ 15
 endif
 
-" Having a problem with gvim not properly setting the lines to
-" be fullscreen. This should fix that problem.
 if has("autocmd")
   function! s:AdjustLines()
     if &lines == 48
@@ -21,6 +19,13 @@ if has("autocmd")
 
   augroup gui_autocmds
     au!
+
+    " Having a problem with gvim not properly setting the lines to
+    " occupy the fullscreen. This should fix that problem.
     autocmd GUIEnter * call s:AdjustLines()
+
+    autocmd BufWritePost .gvimrc,gvimrc source $MYGVIMRC
   augroup END
 endif
+
+noremap <leader>g :tabedit $MYGVIMRC<cr>
