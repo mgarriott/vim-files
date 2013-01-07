@@ -4,10 +4,14 @@ set guioptions=+c
 
 let s:rand = localtime() % 2
 
-if s:rand == 0
-  set guifont=Monaco\ Regular\ 13
-else
-  set guifont=Inconsolata\ Medium\ 15
+" Wrap the font setting in a conditional. This way we
+" won't run it again if we re-source the gvimrc.
+if &guifont !~? 'Monaco' && &guifont !~? 'Inconsolata'
+  if s:rand == 0
+    set guifont=Monaco\ Regular\ 13
+  else
+    set guifont=Inconsolata\ Medium\ 15
+  endif
 endif
 
 if has("autocmd")
