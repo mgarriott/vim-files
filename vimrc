@@ -46,7 +46,6 @@ command! WriteDate call WriteDate()
 
 noremap  :echo "Nope!"<CR>
 inoremap  Nope!
-cnoremap Tab tab
 noremap gs :split<space>
 noremap gS :vsplit<space>
 
@@ -89,6 +88,13 @@ noremap Q gq
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
+
+if exists(":Tabularize")
+  nmap <leader>t= :Tabularize /=<CR>
+  vmap <leader>t= :Tabularize /=<CR>
+  nmap <leader>t: :Tabularize /:\zs<CR>
+  vmap <leader>t: :Tabularize /:\zs<CR>
+endif
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
