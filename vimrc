@@ -124,6 +124,7 @@ if has("autocmd")
   " Also load indent files, to automatically do language-dependent indenting.
   filetype plugin indent on
   filetype plugin on
+  runtime macros/matchit.vim
 
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
