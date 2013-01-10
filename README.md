@@ -1,7 +1,7 @@
 ## Installation
 
     # Clone the repository
-    git clone git@github.com:mgarriott/Vim-Files.git ~/.vim
+    git clone git@github.com:mgarriott/vim-files.git ~/.vim
 
     # Initialize and clone the submodules
     cd ~/.vim
