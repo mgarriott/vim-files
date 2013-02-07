@@ -33,3 +33,6 @@ if has("autocmd")
 endif
 
 noremap <leader>g :tabedit $MYGVIMRC<cr>
+
+call Picker()
+autocmd VimEnter * echo 'using colorscheme: '.g:colorscheme_file

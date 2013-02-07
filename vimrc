@@ -10,10 +10,10 @@ set nocompatible
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-set history=200		" keep 200 lines of command line history
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
+set history=200 " keep 200 lines of command line history
+set ruler       " show the cursor position all the time
+set showcmd     " display incomplete commands
+set incsearch   " do incremental searching
 
 let mapleader = " "
 
@@ -81,6 +81,10 @@ noremap <leader>v :tabedit $MYVIMRC<cr>
 noremap <leader>ctw :%substitute/\s\+$//<cr>:write<cr>
 
 silent! call pathogen#infect()
+
+if !has("gui_running")
+  colorscheme jellybeans
+endif
 
 " Don't use Ex mode, use Q for formatting
 noremap Q gq

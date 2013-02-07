@@ -90,8 +90,6 @@ function! NewCS()
     call ShowCS()
 endfunction
 
-call Picker()
-autocmd VimEnter * echo 'using colorscheme: '.g:colorscheme_file
 command! Love call LoveCS()
 command! Hate call HateCS()
 command! CS call ShowCS()
