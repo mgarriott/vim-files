@@ -34,18 +34,6 @@ if !has("gui_running")
   set termencoding=latin1
 endif
 
-" Find the current date and and write it after the cursor.
-function! WriteDate()
-  let date = strftime("%Y-%m-%d", localtime())
-  let temp = @d
-  let @d = date
-  normal "dp
-  let @d = temp
-endfunction
-command! WriteDate call WriteDate()
-
-noremap  :echo "Nope!"<CR>
-inoremap  Nope!
 noremap gs :split<space>
 noremap gS :vsplit<space>
 
