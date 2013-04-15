@@ -52,6 +52,10 @@ nnoremap <C-K> <C-w><C-K>
 nnoremap <C-J> <C-w><C-J>
 nnoremap <C-L> <C-w><C-L>
 
+" Swap Jump to Mark keys
+nnoremap ' `
+nnoremap ` '
+
 " Quick commands for opening a file in the current files directory
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 map <leader>ew :e %%
