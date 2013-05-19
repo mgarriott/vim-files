@@ -28,3 +28,6 @@
 [submodule "bundle/vim-surround"]
 	path = bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
+[submodule "bundle/vim-io"]
+	path = bundle/vim-io
+	url = https://github.com/xhr/vim-io.git
