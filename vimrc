@@ -34,6 +34,13 @@ if !has("gui_running")
   set termencoding=latin1
 endif
 
+" Make :tabn and :tabp easier
+nnoremap H :tabprev<enter>
+nnoremap L :tabnext<enter>
+nnoremap gt :echoe 'Save time! Use L!'<enter>
+nnoremap gT :echoe 'Save time! Use H!'<enter>
+
+
 noremap gs :split<space>
 noremap gS :vsplit<space>
 
