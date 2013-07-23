@@ -40,7 +40,6 @@ nnoremap L :tabnext<enter>
 nnoremap gt :echoe 'Save time! Use L!'<enter>
 nnoremap gT :echoe 'Save time! Use H!'<enter>
 
-
 noremap gs :split<space>
 noremap gS :vsplit<space>
 
@@ -60,8 +59,8 @@ nnoremap <C-J> <C-w><C-J>
 nnoremap <C-L> <C-w><C-L>
 
 " Swap Jump to Mark keys
-nnoremap ' `
-nnoremap ` '
+noremap ' `
+noremap ` '
 
 " Quick commands for opening a file in the current files directory
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
