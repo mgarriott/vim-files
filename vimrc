@@ -28,6 +28,7 @@ set shiftround
 " Prevent strange escape charaters when entering unicode.
 set encoding=utf8
 set listchars=tab:▸\ ,eol:¬
+set rnu
 
 " Causes error in gvim
 if !has("gui_running")
@@ -45,6 +46,8 @@ noremap gS :vsplit<space>
 
 cnoremap <c-p> <up>
 cnoremap <c-n> <down>
+
+nnoremap <leader>d 0D
 
 " Simplify switching windows
 nnoremap <C-h> <C-w><C-h>
@@ -109,6 +112,54 @@ if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
 endif
+
+" Custom functions
+function! s:move(src, dest)
+  let src = expand(a:src)
+  let dest = expand(a:dest)
+
+  if filewritable(dest)
+    echoe "Move failed. File at destination exists!"
+  elseif filewritable(src)
+
+    echom src . " " . dest
+
+    if rename(src, dest) == 0
+      echom "Successfully renamed"
+
+      let buf_num = bufnr(src)
+      execute "edit " . dest
+      execute "bdelete " . buf_num
+    else
+      echoe "Move failed!"
+    endif
+
+  else
+    echoe "Move failed. Source file doesn't exist!"
+  endif
+
+endfunction
+
+function! s:bufClear(bang)
+
+  redir => bufs
+    silent ls
+  redir END
+
+  let buf_list = split(bufs, "\n")
+  let to_delete = []
+  for my_buf in buf_list
+    if my_buf =~? "^\\s*\\d\\+\\s*h"
+      call add(to_delete, split(my_buf)[0])
+    endif
+  endfor
+
+  execute "bdelete" . a:bang . " " . join(to_delete)
+endfunction
+
+" Commands
+command! -nargs=+ -complete=file Mv call s:move(<f-args>)
+command! -nargs=0 -bang BufClear call s:bufClear("<bang>")
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
