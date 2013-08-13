@@ -28,7 +28,8 @@ set shiftround
 " Prevent strange escape charaters when entering unicode.
 set encoding=utf8
 set listchars=tab:▸\ ,eol:¬
-set rnu
+set relativenumber
+set cryptmethod=blowfish
 
 " Causes error in gvim
 if !has("gui_running")
