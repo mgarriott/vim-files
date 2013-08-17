@@ -31,3 +31,6 @@
 [submodule "bundle/vim-io"]
 	path = bundle/vim-io
 	url = https://github.com/xhr/vim-io.git
+[submodule "bundle/syntastic"]
+	path = bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
