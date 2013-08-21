@@ -30,6 +30,7 @@ set encoding=utf8
 set listchars=tab:▸\ ,eol:¬
 set relativenumber
 set cryptmethod=blowfish
+set textwidth=78
 
 " Causes error in gvim
 if !has("gui_running")
@@ -47,6 +48,7 @@ noremap gS :vsplit<space>
 
 cnoremap <c-p> <up>
 cnoremap <c-n> <down>
+cnoremap <c-g> <c-c>
 
 nnoremap <leader>d 0D
 
