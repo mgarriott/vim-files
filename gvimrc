@@ -1,6 +1,7 @@
 " Gui options
 set guioptions=-tTmrR
 set guioptions=+c
+set guifont=Nimbus\ Mono\ L\ 13
 
 let s:rand = localtime() % 2
 
@@ -15,16 +16,6 @@ function! s:font_swap()
   " Swapping the font screws up this lines. Add one line to fix it.
   set lines+=1
 endfunction
-
-" Wrap the font setting in a conditional. This way we
-" won't run it again if we re-source the gvimrc.
-if &guifont !~? 'Monaco' && &guifont !~? 'Inconsolata'
-  if s:rand == 0
-    set guifont=Monaco\ Regular\ 13
-  else
-    set guifont=Inconsolata\ Medium\ 15
-  endif
-endif
 
 if has("autocmd")
   function! s:AdjustLines()
