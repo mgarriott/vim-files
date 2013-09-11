@@ -17,6 +17,8 @@ set incsearch   " do incremental searching
 
 let mapleader = " "
 
+let g:seek_enable_jumps = 1
+
 set hidden
 set splitbelow splitright
 set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smarttab autoindent
