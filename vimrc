@@ -43,6 +43,11 @@ nnoremap L :tabnext<enter>
 nnoremap gt :echoe 'Save time! Use L!'<enter>
 nnoremap gT :echoe 'Save time! Use H!'<enter>
 
+nnoremap <leader>tf :tabfind<space>
+nnoremap <leader>f :find<space>
+nnoremap <leader>s :split<space>
+nnoremap <leader>te :tabedit<space>
+
 noremap gs :split<space>
 noremap gS :vsplit<space>
 
