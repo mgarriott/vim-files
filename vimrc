@@ -94,7 +94,7 @@ noremap <leader>ctw :%substitute/\s\+$//<cr>:write<cr>
 silent! call pathogen#infect()
 
 if !has("gui_running")
-  colorscheme jellybeans
+  colorscheme lucius
 endif
 
 " Don't use Ex mode, use Q for formatting
@@ -124,28 +124,52 @@ if &t_Co > 2 || has("gui_running")
 endif
 
 " Custom functions
-function! s:move(src, dest)
-  let src = expand(a:src)
-  let dest = expand(a:dest)
+function! s:move(...)
+  if a:0 == 1
+    " If only one argument is provided we will assume that the provided
+    " argument is the destination, and that the source is the current file
+    let src = expand('%')
+    let dest = expand(a:1)
+  elseif a:0 == 2
+    " If two arguments are provided, the first argument is the source and
+    " the second argument is the destination
+    let src = expand(a:1)
+    let dest = expand(a:2)
+  else
+    " If fewer than 1 argument or more than two arguments are provided:
+    " exit with an error
+    echoe "This function requires either one or two arguments"
+    return
+  endif
 
-  if filewritable(dest)
+  if isdirectory(dest)
+    " If the destination is a directory move the src into that directory
+    " keeping the same basename
+    let new_file = dest."/".fnamemodify(src, ':t')
+    let new_file = substitute(new_file, '/\+', '/', 'g')
+  elseif filewritable(dest)
+    " If the destination is a file that exists throw an error
     echoe "Move failed. File at destination exists!"
   elseif filewritable(src)
+    let new_file = dest
+  else
+    echoe "Move failed. Source file doesn't exist!"
+  endif
 
-    echom src . " " . dest
+  if fnamemodify(src, ':p') != fnamemodify(new_file, ':p')
+    let success = rename(src, new_file)
 
-    if rename(src, dest) == 0
-      echom "Successfully renamed"
-
+    if success == 0
       let buf_num = bufnr(src)
-      execute "edit " . dest
+      execute "edit " . new_file
       execute "bdelete " . buf_num
+
+      echom "Successfully renamed " . src . " to " . new_file
     else
       echoe "Move failed!"
     endif
-
   else
-    echoe "Move failed. Source file doesn't exist!"
+    echom "Source and destination are the same. No action."
   endif
 
 endfunction
