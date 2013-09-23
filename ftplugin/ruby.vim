@@ -5,3 +5,8 @@ augroup pry
   autocmd FileType ruby noremap <buffer> <localleader>p orequire 'pry'; binding.pry<esc>
   autocmd FileType eruby noremap <buffer> <localleader>p o<% require 'pry'; binding.pry %><esc>
 augroup END
+
+" Abbreviations
+
+" Automatically add end to a define block
+iabbrev def def method_name<enter>end<up><up><esc>wve<left>
