@@ -91,7 +91,8 @@ noremap <leader>tc :read !git log --branches --pretty=format:"\%s" --since yeste
 noremap <leader>v :tabedit $MYVIMRC<cr>
 noremap <leader>ctw :%substitute/\s\+$//<cr>:write<cr>
 
-nnoremap <leader>p :call OpenFTPluginFile()<cr>
+nnoremap <leader>p :execute "edit " . GetFTPluginFile()<cr>
+nnoremap <leader>P :execute "source " . GetFTPluginFile()<cr>
 
 silent! call pathogen#infect()
 
@@ -193,9 +194,8 @@ function! s:bufClear(bang)
   execute "bdelete" . a:bang . " " . join(to_delete)
 endfunction
 
-function! OpenFTPluginFile()
-  let filename = $HOME . "/.vim/ftplugin/" . &filetype . ".vim"
-  execute "edit " . filename
+function! GetFTPluginFile()
+  return $HOME . "/.vim/ftplugin/" . &filetype . ".vim"
 endfunction
 
 " Commands
