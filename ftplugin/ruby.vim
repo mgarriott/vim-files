@@ -9,4 +9,5 @@ augroup END
 " Abbreviations
 
 " Automatically add end to a define block
-iabbrev def def method_name<enter>end<up><up><esc>wve<left>
+" iabbrev def def method_name<enter>end<up><esc>wve<left>
+" iabbrev it it "does something" do<enter>end<up><esc>wvi"<left>
