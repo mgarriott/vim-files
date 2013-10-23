@@ -18,13 +18,16 @@ set incsearch   " do incremental searching
 let mapleader = " "
 
 let g:seek_enable_jumps = 1
+let g:snips_author = 'Matt Garriott'
+
+let g:ctrlp_working_path_mode = 'wr'
+let g:ctrlp_root_markers = ['.']
 
 set hidden
 set splitbelow splitright
 set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smarttab autoindent
 set ignorecase smartcase
 set wildmenu wildmode=list:longest
-set commentstring=\ #\ %s
 set number
 set shiftround
 " Prevent strange escape charaters when entering unicode.
@@ -49,6 +52,9 @@ nnoremap <leader>tf :tabfind<space>
 nnoremap <leader>f :find<space>
 nnoremap <leader>s :split<space>
 nnoremap <leader>te :tabedit<space>
+
+" CtrlP Dirs
+nnoremap <leader>e :CtrlP /etc<enter>
 
 noremap gs :split<space>
 noremap gS :vsplit<space>
@@ -77,10 +83,6 @@ noremap ` '
 
 " Quick commands for opening a file in the current files directory
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
-map <leader>ew :e %%
-map <leader>es :sp %%
-map <leader>ev :vsp %%
-map <leader>et :tabe %%
 
 " Write a file as root in a non-root vim session
 noremap <leader>wr :write !sudo tee % > /dev/null<CR>
