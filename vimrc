@@ -32,15 +32,11 @@ set number
 set shiftround
 " Prevent strange escape charaters when entering unicode.
 set encoding=utf8
+set termencoding=utf-8
 set listchars=tab:▸\ ,eol:¬
 set relativenumber
 set cryptmethod=blowfish
 set textwidth=78
-
-" Causes error in gvim
-if !has("gui_running")
-  set termencoding=latin1
-endif
 
 " Make :tabn and :tabp easier
 nnoremap H :tabprev<enter>
