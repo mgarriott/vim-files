@@ -34,9 +34,12 @@ set shiftround
 set encoding=utf8
 set termencoding=utf-8
 set listchars=tab:▸\ ,eol:¬
-set relativenumber
-set cryptmethod=blowfish
 set textwidth=78
+
+if version >= 703
+  set relativenumber
+  set cryptmethod=blowfish
+endif
 
 " Make :tabn and :tabp easier
 nnoremap H :tabprev<enter>
