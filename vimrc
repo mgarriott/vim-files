@@ -53,7 +53,8 @@ nnoremap <leader>s :split<space>
 nnoremap <leader>te :tabedit<space>
 
 " CtrlP Dirs
-nnoremap <leader>e :CtrlP /etc<enter>
+nnoremap <leader>pe :CtrlP /etc<enter>
+nnoremap <leader>pv :CtrlP $HOME/.vim<enter>
 
 noremap gs :split<space>
 noremap gS :vsplit<space>
