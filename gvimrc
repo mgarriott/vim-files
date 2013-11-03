@@ -16,23 +16,25 @@ function! s:font_swap()
   set lines+=1
 endfunction
 
-redir => randr_output
-  silent !xrandr
-redir END
-let screen_res = matchstr(randr_output, 'current \zs\d\{3,4} x \d\{3,4}')
-
-if screen_res == "1280 x 800"
-  let size = '10'
-else
-  let size = '13'
-end
-let &guifont = "Source Code Pro " . size
-
 if has("autocmd")
   function! s:AdjustLines()
     if &lines == 48
       set lines+=1
     endif
+  endfunction
+
+  function! s:set_font()
+    redir => randr_output
+      silent !xrandr
+    redir END
+    let screen_res = matchstr(randr_output, 'current \zs\d\{3,4} x \d\{3,4}')
+
+    if screen_res == "1280 x 800"
+      let size = '10'
+    else
+      let size = '13'
+    end
+    let &guifont = "Source Code Pro " . size
   endfunction
 
   augroup gui_autocmds
@@ -43,6 +45,7 @@ if has("autocmd")
     " autocmd GUIEnter * call s:AdjustLines()
 
     autocmd BufWritePost .gvimrc,gvimrc source $MYGVIMRC
+    autocmd VimEnter * call s:set_font()
   augroup END
 endif
 
