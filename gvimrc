@@ -1,7 +1,6 @@
 " Gui options
 set guioptions=-tTmrR
 set guioptions=+c
-set guifont=Nimbus\ Mono\ L\ 13
 
 let s:rand = localtime() % 2
 
@@ -16,6 +15,18 @@ function! s:font_swap()
   " Swapping the font screws up this lines. Add one line to fix it.
   set lines+=1
 endfunction
+
+redir => randr_output
+  silent !xrandr
+redir END
+let screen_res = matchstr(randr_output, 'current \zs\d\{3,4} x \d\{3,4}')
+
+if screen_res == "1280 x 800"
+  let size = '10'
+else
+  let size = '13'
+end
+let &guifont = "Source Code Pro " . size
 
 if has("autocmd")
   function! s:AdjustLines()
