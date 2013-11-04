@@ -1,0 +1,5 @@
+snippet head
+	`Comment('Filename: ' . expand('%'))`
+	`Comment('Author: ' . g:snips_author)`
+	`Comment('Date: ' . strftime("%Y-%m-%d"))`
+	`Comment(printf('Copyright %s %s %s. All Rights Reserved.', &enc[:2] == "utf" ? "©" : "(c)", strftime("%Y"), g:snips_author))`
