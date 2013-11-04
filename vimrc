@@ -130,6 +130,14 @@ if &t_Co > 2 || has("gui_running")
 endif
 
 " Custom functions
+function! ToggleAutoFormat()
+  if &fo =~? 'a'
+    set formatoptions-=a
+  else
+    set formatoptions+=a
+  endif
+endfunction
+
 function! s:move(...)
   if a:0 == 1
     " If only one argument is provided we will assume that the provided
