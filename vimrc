@@ -35,6 +35,7 @@ set encoding=utf8
 set termencoding=utf-8
 set listchars=tab:▸\ ,eol:¬
 set textwidth=78
+set nojoinspaces
 
 if version >= 703
   set relativenumber
