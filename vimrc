@@ -56,6 +56,7 @@ nnoremap <leader>te :tabedit<space>
 " CtrlP Dirs
 nnoremap <leader>pe :CtrlP /etc<enter>
 nnoremap <leader>pv :CtrlP $HOME/.vim<enter>
+nnoremap <leader>pd :CtrlP $HOME/.dotfiles<enter>
 
 noremap gs :split<space>
 noremap gS :vsplit<space>
