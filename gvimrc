@@ -34,7 +34,7 @@ if has("autocmd")
     else
       let size = '13'
     end
-    let &guifont = "Source Code Pro " . size
+    let &guifont = "Source Code Pro Medium " . size
   endfunction
 
   augroup gui_autocmds
