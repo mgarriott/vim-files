@@ -139,6 +139,21 @@ function! ToggleAutoFormat()
   endif
 endfunction
 
+function! s:remove(file)
+  expand(a:file)
+  if filewritable(a:file)
+    if delete(a:file) == 0 " Successfully deleted
+      execute "bdelete " .  bufnr(src)
+
+      echom "Successfully removed " . a:file
+    else
+      echoe "Failed to delete file!"
+    endif
+  else
+    echoe "File is not writeable or does not exist. No action taken."
+  endif
+endfunction
+
 function! s:move(...)
   if a:0 == 1
     " If only one argument is provided we will assume that the provided
@@ -211,6 +226,7 @@ function! GetFTPluginFile()
 endfunction
 
 " Commands
+command! -nargs=1 -complete=file Rm call s:remove(<f-args>)
 command! -nargs=+ -complete=file Mv call s:move(<f-args>)
 command! -nargs=0 -bang BufClear call s:bufClear("<bang>")
 
