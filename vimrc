@@ -66,6 +66,7 @@ cnoremap <c-n> <down>
 cnoremap <c-g> <c-c>
 
 nnoremap <leader>d 0D
+nnoremap <localleader>f :call ToggleAutoFormat()<CR>
 
 " Simplify switching windows
 nnoremap <C-h> <C-w><C-h>
