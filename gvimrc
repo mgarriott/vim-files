@@ -1,9 +1,15 @@
 " Gui options
 set guioptions=-tTmrR
 set guioptions=+c
-set guifont=Ubuntu\ Mono\ 13
+set guifont=Source\ Code\ Pro\ 13
 set background=light
 color solarized
+
+" Set font size to the provided size
+function! s:setFontSize(size)
+  let new_font = substitute(&gfn, '\d\+.\{-}$', a:size, '')
+  let &gfn = new_font
+endfunction
 
 if has("autocmd")
   function! s:AdjustLines()
@@ -26,3 +32,4 @@ endif
 noremap <leader>g :tabedit $MYGVIMRC<cr>
 
 command! FontSwap call s:font_swap()
+command! -nargs=1 FontSize call s:setFontSize(<f-args>)
