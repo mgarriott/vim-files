@@ -24,6 +24,8 @@ let g:ctrlp_working_path_mode = 'wr'
 let g:ctrlp_root_markers = ['.']
 let g:ctrlp_follow_symlinks = 1
 
+let g:instant_markdown_slow = 1
+
 let g:utl_cfg_hdl_scm_http_system = "silent !chromium '%u#%f'"
 let g:utl_cfg_hdl_scm_http = g:utl_cfg_hdl_scm_http_system
 nnoremap <leader>o :Utl<cr>
