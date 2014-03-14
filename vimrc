@@ -147,6 +147,11 @@ function! ToggleAutoFormat()
   endif
 endfunction
 
+function! TabEditSnippetFile()
+  let snip_file = $HOME . '/.vim/snippets/' . &ft . '.snippets'
+  silent execute 'tabedit ' . snip_file
+endfunction
+
 function! s:remove(file)
   expand(a:file)
   if filewritable(a:file)
@@ -237,6 +242,7 @@ endfunction
 command! -nargs=1 -complete=file Rm call s:remove(<f-args>)
 command! -nargs=+ -complete=file Mv call s:move(<f-args>)
 command! -nargs=0 -bang BufClear call s:bufClear("<bang>")
+command! -nargs=0 Snip call TabEditSnippetFile()
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
