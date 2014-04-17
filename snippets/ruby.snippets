@@ -1,8 +1,22 @@
+snippet init
+	def initialize
+		${0}
+	end
+snippet inita
+	def initialize(${0:args})
+		${1}
+	end
 snippet ex
 	expect(${1:actual}).to ${0}
+snippet exn
+	expect(${1:actual}).to_not ${0}
 snippet exe
 	expect(${1:actual}).to eq(${2:expected})
 snippet exc
 	expect {
 	  ${1:# block}
 	}.to change { ${2:block2} }.by(${3:1})
+snippet exnc
+	expect {
+	  ${1:# block}
+	}.to_not change { ${2:block2} }
