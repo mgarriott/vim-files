@@ -15,6 +15,9 @@ set ruler       " show the cursor position all the time
 set showcmd     " display incomplete commands
 set incsearch   " do incremental searching
 
+" Common word screw-ups
+iabbrev destory destroy
+
 let mapleader = " "
 
 let g:seek_enable_jumps = 1
@@ -139,6 +142,21 @@ if &t_Co > 2 || has("gui_running")
 endif
 
 " Custom functions
+function! TimeEdit()
+  0put +
+  %s/\n/, /g
+  s/[, ]\+$//
+  yank +
+endfunction
+
+function! QuickfixFilenames()
+  let buffer_numbers = {}
+  for quickfix_item in getqflist()
+    let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
+  endfor
+  return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
+endfunction
+
 function! ToggleAutoFormat()
   if &fo =~? 'a'
     set formatoptions-=a
@@ -243,6 +261,7 @@ command! -nargs=1 -complete=file Rm call s:remove(<f-args>)
 command! -nargs=+ -complete=file Mv call s:move(<f-args>)
 command! -nargs=0 -bang BufClear call s:bufClear("<bang>")
 command! -nargs=0 Snip call TabEditSnippetFile()
+command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
