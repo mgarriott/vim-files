@@ -29,10 +29,19 @@ let g:ctrlp_follow_symlinks = 1
 
 let g:instant_markdown_slow = 1
 
+" Use `ag` for Ack
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
 let g:utl_cfg_hdl_scm_http_system = "silent !chromium '%u#%f'"
 let g:utl_cfg_hdl_scm_http = g:utl_cfg_hdl_scm_http_system
+
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v(tmp|public)$',
+  \ }
+
 nnoremap <leader>o :Utl<cr>
 
+set wildignore+=*/tmp/*
 set hidden
 set splitbelow splitright
 set tabstop=2 shiftwidth=2 softtabstop=2 expandtab smarttab autoindent
@@ -171,12 +180,12 @@ function! TabEditSnippetFile()
 endfunction
 
 function! s:remove(file)
-  expand(a:file)
-  if filewritable(a:file)
-    if delete(a:file) == 0 " Successfully deleted
-      execute "bdelete " .  bufnr(src)
+  let file = expand(a:file)
+  if filewritable(file)
+    if delete(file) == 0 " Successfully deleted
+      execute "bdelete " .  bufnr(file)
 
-      echom "Successfully removed " . a:file
+      echom "Successfully removed " . file
     else
       echoe "Failed to delete file!"
     endif
@@ -316,3 +325,5 @@ if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
 		  \ | wincmd p | diffthis
 endif
+
+let g:syntastic_mode_map = { 'passive_filetypes': ['scss', 'sass'] }
