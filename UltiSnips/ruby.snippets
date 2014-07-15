@@ -1,0 +1,11 @@
+snippet init
+def initialize(${1:opts = {}})
+`!p
+instance_var = lambda a: "@{0} = {0}".format(a)
+snip.shift()
+args = re.split(r'\s*,\s*', t[1])
+snip.rv = snip.mkline(instance_var(args.pop(0)))
+for arg in args: snip += instance_var(arg)
+`
+end
+endsnippet
