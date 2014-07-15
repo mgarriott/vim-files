@@ -36,7 +36,8 @@ let g:utl_cfg_hdl_scm_http_system = "silent !chromium '%u#%f'"
 let g:utl_cfg_hdl_scm_http = g:utl_cfg_hdl_scm_http_system
 
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v(tmp|public)$',
+  \ 'dir':  '\v' . getcwd() . '/(tmp|public)$',
+  \ 'file': '\v\.(jpg|png)$',
   \ }
 
 nnoremap <leader>o :Utl<cr>
