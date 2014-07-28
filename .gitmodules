@@ -75,3 +75,6 @@
 [submodule "bundle/vim-exchange"]
 	path = bundle/vim-exchange
 	url = git://github.com/tommcdo/vim-exchange.git
+[submodule "bundle/vim_html_to_haml"]
+	path = bundle/vim_html_to_haml
+	url = git@github.com:shmay/vim_html_to_haml.git
