@@ -1,8 +1,8 @@
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-set noexpandtab
+setlocal tabstop=2
+setlocal softtabstop=2
+setlocal shiftwidth=2
+setlocal noexpandtab
 
-set list
+setlocal list
 
 setlocal foldmethod=syntax
