@@ -1,9 +1,9 @@
 " Gui options
 set guioptions=-tTmrR
 set guioptions=+c
-set guifont=Source\ Code\ Pro\ Medium\ 13
+set guifont=Monaco\ 11
 set background=light
-color railscasts
+color solarized
 
 " Set font size to the provided size
 function! s:setFontSize(size)
