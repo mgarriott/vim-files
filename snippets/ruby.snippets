@@ -20,3 +20,6 @@ snippet exnc
 	expect {
 	  ${1:# block}
 	}.to_not change { ${2:block2} }
+
+snippet eq
+	assert_equal ${1:expected}, ${2:actual}
