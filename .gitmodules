@@ -78,3 +78,6 @@
 [submodule "bundle/vim_html_to_haml"]
 	path = bundle/vim_html_to_haml
 	url = git@github.com:shmay/vim_html_to_haml.git
+[submodule "bundle/vim-scala"]
+	path = bundle/vim-scala
+	url = https://github.com/derekwyatt/vim-scala.git
