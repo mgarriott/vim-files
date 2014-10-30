@@ -297,6 +297,11 @@ if has("autocmd")
   filetype plugin on
   runtime macros/matchit.vim
 
+  augroup my_filetypes
+    au!
+    autocmd BufNewFile,BufRead *.ejs set filetype=ejs
+  augroup END
+
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
     au!
